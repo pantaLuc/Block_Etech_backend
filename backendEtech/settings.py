@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # 5
 
     #application tiers
     'rest_framework', # 1
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.account', # 4
     'allauth.socialaccount', # 4
     'dj_rest_auth.registration', #4
-
+    'rolepermissions',#6
     
 
     #local application
