@@ -55,6 +55,10 @@ INSTALLED_APPS = [
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 SITE_ID = 1 # new
+AUTH_USER_MODEL = 'users.User'
+#ROLEPERMISSIONS_MODULE = 'myapplication.roles'
+
+
 # Rest_Framework
 REST_FRAMEWORK = {
 'DEFAULT_PERMISSION_CLASSES': [
