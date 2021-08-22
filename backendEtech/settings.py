@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'allauth', # 4
     'allauth.account', # 4
     'allauth.socialaccount', # 4
+    'allauth.socialaccount.providers.google',#7
     'dj_rest_auth.registration', #4
     'rolepermissions',#6
     
@@ -53,20 +56,28 @@ INSTALLED_APPS = [
     #local application
     'users.apps.UsersConfig',
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 SITE_ID = 1 # new
 AUTH_USER_MODEL = 'users.User'
-#ROLEPERMISSIONS_MODULE = 'myapplication.roles'
-
-
+ROLEPERMISSIONS_MODULE = 'backendEtech.roles'
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserDetailsSerializer',
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.RegisterSerializer',
+}
 # Rest_Framework
 REST_FRAMEWORK = {
 'DEFAULT_PERMISSION_CLASSES': [
 'rest_framework.permissions.IsAuthenticated',
 ],
-'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+'DEFAULT_AUTHENTICATION_CLASSES': [
 'rest_framework.authentication.SessionAuthentication',
-'rest_framework.authentication.TokenAuthentication', # new
 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
 ],
 
@@ -82,7 +93,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backendEtech.urls'
-
+AUTHENTICATION_BACKENDS = [
+    # allauth specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    # Needed to login by username in Django admin, regardless of allauth
+    'django.contrib.auth.backends.ModelBackend',
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -155,3 +171,21 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_USERNAME_REQUIRED = False # new
+ACCOUNT_AUTHENTICATION_METHOD = 'email' # new
+ACCOUNT_EMAIL_REQUIRED = True # new
+ACCOUNT_UNIQUE_EMAIL = True # new
+#ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+LOGIN_URL = 'http://localhost:8000/api/user/login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.1und1.de'
+EMAIL_HOST_USER = 'noreply@etech-sw.org'
+EMAIL_HOST_PASSWORD = 'wTOYGwrJ5eOvuzzxLvFA'
+EMAIL_PORT = 587
+#send_mail('bonjour','here isthe message' ,'lucapameni@gmail.com' ,['luc.panta@facsciences-uy1.cm'] ,fail_silently=False)
+#from django.core.mail import send_mail

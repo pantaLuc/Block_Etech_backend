@@ -30,13 +30,18 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+GENDER_SELECTION = [
+    ('M', 'Male'),
+    ('F', 'Female'),
+    ('NS', 'Not Specified'),
+]
 
-class User(AbstractBaseUser, PermissionsMixin):
-    ROLES = [
+ROLES = [
         ('admin', 'admin'),
         ('writer', 'writer'),
-        ('reader','reader')
+        ('user','user')
     ]
+class User(AbstractBaseUser, PermissionsMixin):
     
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(max_length=250, unique=True)
@@ -51,16 +56,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     address = models.CharField(max_length=300,  blank=True, null=True)
     city = models.CharField(max_length=30, blank=True, null=True)
     about_me = models.TextField(max_length=500, blank=True, null=True)
+    phone_number = models.CharField(max_length=30 ,unique=True)
     profile_image = models.ImageField(null=True ,blank=True,upload_to='media/')
     role = models.CharField(
         max_length=7,
         choices=ROLES,
         null=True, 
         blank=True,
-        default="client"
+        default="writer"
         # Roles, on_delete=models.CASCADE, related_name='role_user', null=True, blank=True
         )
-
+    gender = models.CharField(max_length=20, choices=GENDER_SELECTION)
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
