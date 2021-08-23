@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     #local application
     'users.apps.UsersConfig',
+    'blog.apps.BlogConfig'
 ]
 SITE_ID = 1 # new
 AUTH_USER_MODEL = 'users.User'
