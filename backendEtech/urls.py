@@ -46,8 +46,8 @@ urlpatterns = [
     ), #6 before registration
     path('api-auth/', include('rest_framework.urls')),#1
     path('api/user/', include('dj_rest_auth.urls')), #3
-    path('user/' ,include('users.urls')),
-    path('blog/' ,include('blog.urls')),
+    path('user/api/' ,include('users.urls')),
+    path('blog/api/' ,include('blog.urls')),
     path('api/registration/', include('dj_rest_auth.registration.urls')),#4
     path('api/user/account-confirm-email/',VerifyEmailView.as_view(),name='account_email_verification_sent'),#5
    path(
