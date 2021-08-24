@@ -1,3 +1,4 @@
+from enum import unique
 from rest_framework import serializers
 from allauth.account.adapter import get_adapter
 from .models import User
@@ -9,7 +10,7 @@ from rolepermissions.roles import assign_role
 
 class RegisterSerializer(RegisterSerializer):
     gender = serializers.ChoiceField(choices=GENDER_SELECTION)
-    phone_number = serializers.CharField(max_length=30)
+    phone_number = serializers.CharField(max_length=30 ,unique=True)
     @transaction.atomic
     def save(self, request):
         user = super().save(request)
