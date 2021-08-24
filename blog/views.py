@@ -15,8 +15,8 @@ from rolepermissions.decorators import has_role_decorator
 from rolepermissions.roles import assign_role
 # Create your views here.
 
-class ArtticleViewCreate(HasPermissionsMixin,generics.CreateAPIView):
-   required_permission = 'write_article'
+class ArtticleViewCreate(HasRoleMixin,generics.CreateAPIView):
+   allowed_roles = 'writer'
    queryset=Article.objects.all()
    serializer_class=ArticleSerializer
 
@@ -56,14 +56,10 @@ class ArticleAdmin(HasRoleMixin, viewsets.ViewSet):
             'message':'article est deja publie'
          })
       return Response(status=status.HTTP_202_ACCEPTED)
-   def change_role(self ,request ,pk ,role):
-      user=User.objects.get(pk)
-      role=assign_role(user,role)
-      user.save()
-      return Response(status=status.HTTP_202_ACCEPTED)
+   
      
 class ListArticlePublish(viewsets.ViewSet):
-   def list_publish_article():
+   def list_publish_article(self ,request):
       queryset=Article.objects.filter(status='published').all()
       serializers=ArticleSerializer(queryset,many=True)
       return Response(serializers.data)
@@ -75,9 +71,16 @@ class ListArticlePublish(viewsets.ViewSet):
 
 ### Category 
 class CategoryCreateView(HasRoleMixin,generics.CreateAPIView):
-      allowed_roles='writer'
+      allowed_roles='admin'
       queryset=Category.objects.all()
       serializer_class=CategorySerializer
+class CategoryAPIView(HasRoleMixin ,generics.RetrieveUpdateDestroyAPIView):
+   allowed_roles='admin'
+   queryset=Category.objects.all()
+   serializer_class=CategorySerializer
+
+
+
 
 #### Comment 
 class CommentAPIView(HasRoleMixin ,generics.RetrieveUpdateDestroyAPIView):

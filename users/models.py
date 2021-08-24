@@ -3,15 +3,14 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.utils import timezone
 from django.contrib.auth.models import Group
-
 class UserManager(BaseUserManager):
 
-    def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields ,):
         now = timezone.now()
         if not username:
             raise ValueError(('The given username must be set'))
         email = self.normalize_email(email)
-        user = self.model(username=username, email=email,role='client',
+        user = self.model(username=username, email=email,role=role,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser, last_login=now,
                           date_joined=now, **extra_fields)
@@ -63,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         choices=ROLES,
         null=True, 
         blank=True,
-        default="writer"
+        default="user"
         # Roles, on_delete=models.CASCADE, related_name='role_user', null=True, blank=True
         )
     gender = models.CharField(max_length=20, choices=GENDER_SELECTION)

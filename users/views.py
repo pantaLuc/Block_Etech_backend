@@ -23,3 +23,4 @@ class GithubLogin(SocialLoginView):
     adapter_class = GitHubOAuth2Adapter
     #callback_url = CALLBACK_URL_YOU_SET_ON_GITHUB
     client_class = OAuth2Client
+

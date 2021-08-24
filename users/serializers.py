@@ -3,9 +3,9 @@ from allauth.account.adapter import get_adapter
 from .models import User
 from django.db import transaction
 from allauth.account.utils import setup_user_email
-from rolepermissions.roles import assign_role
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from users.models import GENDER_SELECTION,ROLES
+from rolepermissions.roles import assign_role
 
 class RegisterSerializer(RegisterSerializer):
     gender = serializers.ChoiceField(choices=GENDER_SELECTION)
@@ -16,7 +16,7 @@ class RegisterSerializer(RegisterSerializer):
         user.gender = self.data.get('gender')
         user.phone_number = self.data.get('phone_number')
         user.save()
-        user.role=assign_role(user,'user')
+        assign_role(user ,user.role)
         user.save()
         return user
 

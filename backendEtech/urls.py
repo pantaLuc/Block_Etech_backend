@@ -27,7 +27,7 @@ schema_view = get_schema_view( # new
 openapi.Info(
 title="Blog API",
 default_version="v1",
-description="A sample API for learning DRF",
+description="Here is the blog for Etech-Sw ",
 terms_of_service="https://www.google.com/policies/terms/",
 contact=openapi.Contact(email="hello@example.com"),
 license=openapi.License(name="BSD License"),
@@ -48,7 +48,7 @@ urlpatterns = [
     path('api/user/', include('dj_rest_auth.urls')), #3
     path('user/' ,include('users.urls')),
     path('blog/' ,include('blog.urls')),
-    path('registration/', include('dj_rest_auth.registration.urls')),#4
+    path('api/registration/', include('dj_rest_auth.registration.urls')),#4
     path('api/user/account-confirm-email/',VerifyEmailView.as_view(),name='account_email_verification_sent'),#5
    path(
         'rest-auth/password/reset/confirm/<slug:uidb64>/<slug:token>/',

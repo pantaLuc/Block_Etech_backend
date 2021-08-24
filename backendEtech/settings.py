@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 from datetime import timedelta
 import os
 
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration', #4
     'rolepermissions',#6
     'drf_yasg',#8
-    
+    'corsheaders',
 
     #local application
     'users.apps.UsersConfig',
@@ -80,7 +81,7 @@ REST_FRAMEWORK = {
 'rest_framework.permissions.AllowAny',
 ],
 'DEFAULT_AUTHENTICATION_CLASSES': [
-'rest_framework.authentication.SessionAuthentication',
+#'rest_framework.authentication.SessionAuthenticationPath',
 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
 ],
 
@@ -90,6 +91,8 @@ ROLEPERMISSIONS_REDIRECT_TO_LOGIN = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,7 +124,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backendEtech.wsgi.application'
-
+#WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -200,3 +203,13 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 #####media URL
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+django_heroku.settings(locals())
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_REPLACE_HTTPS_REFERER = True
+#CSRF_TRUSTED_ORIGINS =True
+CSRF_TRUSTED_ORIGINS = ['*']

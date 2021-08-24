@@ -1,29 +1,32 @@
 from django.urls import path
-from .views import ArticleAdmin, ArticleWriter, ArtticleViewCreate, CommentAPIView, CommentCreateAPI, ListArticlePublish 
+from .views import ArticleAdmin, ArticleWriter, ArtticleViewCreate, CategoryAPIView, CategoryCreateView, CommentAPIView, CommentCreateAPI, ListArticlePublish 
 urlpatterns = [
- path('listarticle/',ListArticlePublish.as_view({
+ path('listarticlePublished/',ListArticlePublish.as_view({
      'get':'list_publish_article'
  })),
- path('listArticleCategorie/<int:pk>/',ListArticlePublish.as_view({
+ path('listArticlePublishedCategorie/<int:pk>/',ListArticlePublish.as_view({
      'get':'list_publish_article_category'
  })),
- path('createArticle/' , ArtticleViewCreate.as_view()),
+ path('writerCreateArticle/' , ArtticleViewCreate.as_view()),
  path('articleWriter/',ArticleWriter.as_view({
      'get':'list_article'
  })),
- path('modifyArticleWriter/<int:pk>/' ,ArticleWriter.as_view({
+ path('writerModifyArticle/<int:pk>/' ,ArticleWriter.as_view({
      'put':'list_article'
      
  })),
-  path('deleteArticleWriter/<int:pk>/' ,ArticleWriter.as_view({
+  path('writerDeleteArticle/<int:pk>/' ,ArticleWriter.as_view({
      'delete':'delete_article'
  })),
- path('publishArticle/<int:pk>/' ,ArticleAdmin.as_view({
+ path('adminPublishArticle/<int:pk>/' ,ArticleAdmin.as_view({
      'put':'publish_article'
  })),
 ####Comment
- path('createcomment/', CommentCreateAPI.as_view()),
- path('createupdatedelete/<int:pk>',CommentAPIView.as_view())
+ path('userCreatecomment/', CommentCreateAPI.as_view()),
+ path('userCreateUpdateDeleteComment/<int:pk>',CommentAPIView.as_view()),
+##### category 
+path('adminCreateCategory',CategoryCreateView.as_view()),
+path('adminDeleteUptadeRetrieveCategory' ,CategoryAPIView.as_view())
 
 
 ]

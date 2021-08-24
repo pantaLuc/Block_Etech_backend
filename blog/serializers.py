@@ -24,7 +24,7 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Category
-        fields = ('tilte', 'description' ,'slug' ,'description' ,'created_at')
+        fields = ('title', 'description' ,'slug' ,'description' ,'created_at')
 
 
 
