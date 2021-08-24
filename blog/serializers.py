@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from .models import Article, Article_category, Comment, Category, Like, Tag, Article_category, Article_tag
+from .models import Article, Comment, Category, Like, Tag,  Article_tag
 from users.models import User
 from rest_framework import serializers
 from users.serializers import UserDetailsSerializer
@@ -8,7 +8,7 @@ from rest_framework.serializers import SerializerMethodField
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
-        fields=('id','user' ,'title' ,'slug' ,'description' ,'body' ,'category' ,'publish_at','created_at','updated_at','status')
+        fields=('id','user' ,'title' ,'slug' ,'description' ,'body' ,'category' ,'updated_at')
         model=Article
 
 

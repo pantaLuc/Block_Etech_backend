@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,11 +51,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',#7
     'dj_rest_auth.registration', #4
     'rolepermissions',#6
+    'drf_yasg',#8
     
 
     #local application
     'users.apps.UsersConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
 ]
 SITE_ID = 1 # new
 AUTH_USER_MODEL = 'users.User'
@@ -69,13 +70,14 @@ SIMPLE_JWT = {
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'users.serializers.UserDetailsSerializer',
 }
+
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'users.serializers.RegisterSerializer',
 }
 # Rest_Framework
 REST_FRAMEWORK = {
 'DEFAULT_PERMISSION_CLASSES': [
-'rest_framework.permissions.IsAuthenticated',
+'rest_framework.permissions.AllowAny',
 ],
 'DEFAULT_AUTHENTICATION_CLASSES': [
 'rest_framework.authentication.SessionAuthentication',
@@ -83,6 +85,8 @@ REST_FRAMEWORK = {
 ],
 
 }
+ROLEPERMISSIONS_REDIRECT_TO_LOGIN = True
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -190,3 +194,9 @@ EMAIL_HOST_PASSWORD = 'wTOYGwrJ5eOvuzzxLvFA'
 EMAIL_PORT = 587
 #send_mail('bonjour','here isthe message' ,'lucapameni@gmail.com' ,['luc.panta@facsciences-uy1.cm'] ,fail_silently=False)
 #from django.core.mail import send_mail
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+#####media URL
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'

@@ -18,7 +18,7 @@ class Writer(User):
     available_permissions=User.available_permissions
     available_permissions.update(
         {
-          'write_article':True,
+         'write_article':True,
          'delete_article': True,
          'update_article':True 
         }
