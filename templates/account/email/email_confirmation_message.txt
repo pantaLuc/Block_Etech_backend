@@ -5,6 +5,6 @@ WELCOME TO ETECH_BLOg
 {% block content %}{% autoescape off %}
 {% user_display user as user_display %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Vous  recevez cet email parceque L' utilisateur  {{ user_display }} 
-a donner votre email pour s'enregistrer a : {{ site_domain }}.
+a donner votre email pour s'enregistrer a : {{ site_domain=current_site.domain}}.
 
 To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
