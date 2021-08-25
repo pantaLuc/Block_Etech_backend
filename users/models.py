@@ -55,7 +55,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     address = models.CharField(max_length=300,  blank=True, null=True)
     city = models.CharField(max_length=30, blank=True, null=True)
     about_me = models.TextField(max_length=500, blank=True, null=True)
-    phone_number = models.CharField(max_length=30)
     profile_image = models.ImageField(null=True ,blank=True,upload_to='media/')
     role = models.CharField(
         max_length=7,
