@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ArticleAdmin, ArticleWriter, ArtticleViewCreate, CategoryAPIView, CategoryCreateView, CommentAPIView, CommentCreateAPI, ListArticlePublish 
+from .views import ArticleAdmin, ArticleWriter, Article_Tage, ArtticleViewCreate, CategoryAPIView, CategoryCreateView, CommentAPIView, CommentCreateAPI, ListArticlePublish, TagAPIView, TagCreateView 
 urlpatterns = [
  path('listarticlePublished/',ListArticlePublish.as_view({
      'get':'list_publish_article'
@@ -26,7 +26,10 @@ urlpatterns = [
  path('userCreateUpdateDeleteComment/<int:pk>',CommentAPIView.as_view()),
 ##### category 
 path('adminCreateCategory',CategoryCreateView.as_view()),
-path('adminDeleteUptadeRetrieveCategory' ,CategoryAPIView.as_view())
-
+path('adminDeleteUptadeRetrieveCategory' ,CategoryAPIView.as_view()),
+###Tag
+path('adminCreateTag' ,TagCreateView.as_view()),
+path('adminDeleteUpdateRetrieveTag' ,TagAPIView.as_view()),
+path('userRetrieveTageArticle',Article_Tage.as_view())
 
 ]

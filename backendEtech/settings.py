@@ -194,9 +194,9 @@ LOGIN_URL = 'http://localhost:8000/api/user/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.ionos.fr'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'noreply@etech-sw.org'
-EMAIL_HOST_PASSWORD = 'wTOYGwrJ5eOvuzzxLvFA'
+EMAIL_HOST_PASSWORD = 'etech-sw2021'
 EMAIL_PORT = 587
 #send_mail('bonjour','here isthe message' ,'lucapameni@gmail.com' ,['luc.panta@facsciences-uy1.cm'] ,fail_silently=False)
 #from django.core.mail import send_mail

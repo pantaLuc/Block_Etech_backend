@@ -1,10 +1,10 @@
 from collections import UserList
 from django.db.models import query
 from django.http import response
-from blog.models import Article, Category, Comment
+from blog.models import Article, Article_tag, Category, Comment, Tag
 from django.shortcuts import render
 from users.models import User
-from .serializers import ArticleSerializer, CategorySerializer, CommentSerializer
+from .serializers import ArticleSerializer, Article_tagSerializer, CategorySerializer, CommentSerializer, TagSerializer
 from users.serializers import UserDetailsSerializer
 from rest_framework.response import Response
 from rest_framework import generics,permissions, serializers ,viewsets,status
@@ -80,7 +80,19 @@ class CategoryAPIView(HasRoleMixin ,generics.RetrieveUpdateDestroyAPIView):
    serializer_class=CategorySerializer
 
 
-
+###class Comment 
+class TagCreateView(HasRoleMixin ,generics.CreateAPIView):
+   allowed_roles='admin'
+   queryset=Tag.objects.all()
+   serializer_class=TagSerializer
+class TagAPIView(HasRoleMixin ,generics.RetrieveUpdateDestroyAPIView):
+   allowed_roles='admin'
+   queryset=Tag.objects.all()
+   serializer_class=TagSerializer
+class Article_Tage(HasRoleMixin,generics.RetrieveAPIView):
+   allowed_roles='user'
+   queryset=Article_tag.objects.all()
+   serializer_class=Article_tagSerializer
 
 #### Comment 
 class CommentAPIView(HasRoleMixin ,generics.RetrieveUpdateDestroyAPIView):
@@ -92,3 +104,5 @@ class CommentCreateAPI(HasRoleMixin ,generics.CreateAPIView):
    queryset=Comment.objects.all()
    serializer_class=CommentSerializer
 
+class ChangeUserRole(viewsets.ViewSet):
+   pass
