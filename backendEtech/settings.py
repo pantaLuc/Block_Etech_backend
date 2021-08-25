@@ -194,7 +194,7 @@ LOGIN_URL = 'http://localhost:8000/api/user/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.1und1.de'
 EMAIL_HOST_USER = 'noreply@etech-sw.org'
 EMAIL_HOST_PASSWORD = 'wTOYGwrJ5eOvuzzxLvFA'
 EMAIL_PORT = 587
