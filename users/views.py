@@ -1,4 +1,4 @@
-from typing_extensions import ParamSpecArgs
+
 from rest_framework import viewsets
 from users.serializers import UserDetailsSerializer
 from django.shortcuts import render
@@ -26,14 +26,5 @@ class GithubLogin(SocialLoginView):
     #callback_url = CALLBACK_URL_YOU_SET_ON_GITHUB
     client_class = OAuth2Client
 
-class changeUserRole(viewsets.ViewSet):
 
-    def change_user_role_to_admin(self ,request ,pk):
-        user=User.objects.get(id=pk)
-        if user.role !='user' or user.role!='writer':
-            assign_role(user ,'admin')
-            user.role='admin'
-            user.save()
-        else :
-            pass
 
