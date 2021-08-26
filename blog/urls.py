@@ -26,10 +26,10 @@ urlpatterns = [
  path('userCreateUpdateDeleteComment/<int:pk>',CommentAPIView.as_view()),
 ##### category 
 path('adminCreateCategory',CategoryCreateView.as_view()),
-path('adminDeleteUptadeRetrieveCategory' ,CategoryAPIView.as_view()),
+path('adminDeleteUptadeRetrieveCategory/<int:pk>/' ,CategoryAPIView.as_view()),
 ###Tag
 path('adminCreateTag' ,TagCreateView.as_view()),
-path('adminDeleteUpdateRetrieveTag' ,TagAPIView.as_view()),
-path('userRetrieveTageArticle',Article_Tage.as_view())
+path('adminDeleteUpdateRetrieveTag/<int:pk>/' ,TagAPIView.as_view()),
+path('userRetrieveTageArticle/<int:pk>/',Article_Tage.as_view())
 
 ]
