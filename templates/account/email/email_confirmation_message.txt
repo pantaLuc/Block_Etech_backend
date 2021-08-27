@@ -3,5 +3,8 @@
 {% load i18n %}
 {% block content %}
 {% user_display user as user_display %}
+
 You are receiving this mail because  {{ user_display }} is attending to register on our Blog .
-To confirm this is correct, go to {{ activate_url }}{% endblock %}
+To confirm this is correct, go to : {{ activate_url }}
+
+{% endblock %}
