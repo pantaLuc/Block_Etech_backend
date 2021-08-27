@@ -193,7 +193,7 @@ ACCOUNT_UNIQUE_EMAIL = True # new
 #ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-LOGIN_URL = 'http://localhost:8000/api/user/login'
+LOGIN_URL = 'https://etech-blog.herokuapp.com/api/user/login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
