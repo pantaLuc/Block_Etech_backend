@@ -3,6 +3,5 @@
 {% load i18n %}
 {% block content %}{% autoescape off %}
 {% user_display user as user_display %}
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}You are receiving this mail because  {{ user_display }} 
-is attending to register on our Blog .
+You are receiving this mail because  {{ user_display }} is attending to register on our Blog .
 To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
