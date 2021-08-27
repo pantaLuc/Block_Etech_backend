@@ -1,7 +1,7 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Bienvenue sur Etech_blog {{ ETECH_SW }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}You  are welcome on etech_sw blog!{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
+Thank you for chosing etech_sw!
+
 {% endautoescape %}

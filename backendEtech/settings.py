@@ -200,7 +200,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.1und1.de'
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'ne-pas-repondre@etech-sw.org'
+DEFAULT_FROM_EMAIL = 'no-reply-@etech-sw.org'
 EMAIL_PORT = 587
 #send_mail('bonjour','here isthe message' ,'lucapameni@gmail.com' ,['luc.panta@facsciences-uy1.cm'] ,fail_silently=False)
 #from django.core.mail import send_mail
