@@ -4,4 +4,4 @@
 {% block content %}{% autoescape off %}
 {% user_display user as user_display %}
 You are receiving this mail because  {{ user_display }} is attending to register on our Blog .
-To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
+To confirm this is correct, go to {{ activate_url }}
