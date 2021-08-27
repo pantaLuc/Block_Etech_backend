@@ -1,4 +1,4 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Bienvenue sur ETECH_BLOg {{ ETECH_SW }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Bienvenue sur Etech_blog {{ ETECH_SW }}!{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
