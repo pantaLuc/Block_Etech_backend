@@ -1,4 +1,5 @@
-{% load i18n %}{% autoescape off %}You  are welcome on etech_sw blog!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}
+You  are welcome on etech_sw blog!
 
 {% block content %}{% endblock %}
 
