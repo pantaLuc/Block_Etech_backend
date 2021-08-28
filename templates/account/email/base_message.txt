@@ -1,8 +1,7 @@
-{% load i18n %}{% autoescape off %}
-You  are welcome on etech_sw blog!
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=request.get_host%}Hello from {{ site_name }}!{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
-Thank you for chosing etech_sw!
-
+{% blocktrans with site_name=request.get_host site_domain=request.get_host %}Thank you for using {{ site_name }}!
+{{ site_domain }}{% endblocktrans %}
 {% endautoescape %}
