@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
 ]
-SITE_ID = 1 # new
+SITE_ID = 3 # new
 AUTH_USER_MODEL = 'users.User'
 ROLEPERMISSIONS_MODULE = 'backendEtech.roles'
 REST_USE_JWT = True
