@@ -17,7 +17,8 @@ import os
 import environ# Initialise environment variables 
 env = environ.Env()
 environ.Env.read_env()
-
+import pymysql
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -143,7 +144,7 @@ WSGI_APPLICATION = 'backendEtech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE':'django.db.backends.mysql',
         'NAME': 'mysql',
         'USER': 'root',
         'PASSWORD': 'root',
