@@ -13,8 +13,12 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         ordering = ['created_at']
-
-
+    def get_absolute_url(self):
+        kwargs = {
+            'pk': self.id,
+            'slug': self.slug
+        }
+        return reversed('category-pk-slug-detail', kwargs=kwargs)
 
 class Tag(models.Model): 
     author  = models.ForeignKey(User ,related_name="user_tags", on_delete=models.CASCADE)
@@ -24,6 +28,7 @@ class Tag(models.Model):
     class Meta:
         ordering = ['created_at']
 
+
 class Article(models.Model):
     STATUS_CHOICES = (
     ('draft', 'Draft'),
@@ -32,6 +37,7 @@ class Article(models.Model):
 
     user = models.ForeignKey(User ,related_name="posts_user", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False, unique=True)
+    banner = models.URLField(max_length=200, blank=True)
     slug = models.SlugField(default='', editable=False, max_length=200)
     description = models.TextField(max_length=200, blank=False)
     body = models.TextField(blank=False)
