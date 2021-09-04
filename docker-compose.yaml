@@ -15,6 +15,8 @@ services:
   dbetech:
     container_name: mysql
     image: mysql
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
     restart: always
     environment:
       MYSQL_DATABASE: mysql
