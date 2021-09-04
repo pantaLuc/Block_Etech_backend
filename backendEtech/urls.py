@@ -39,6 +39,7 @@ permission_classes=(permissions.AllowAny,),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/health',include('blog.urls')),
     
      path(
         'api/user/registration/account-confirm-email/<str:key>/',

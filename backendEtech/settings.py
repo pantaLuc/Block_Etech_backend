@@ -148,7 +148,7 @@ DATABASES = {
         'NAME': 'mysql',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'db',
+        'HOST': 'dbetech',
         'PORT': '3306'
     }
 }
