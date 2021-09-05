@@ -48,5 +48,5 @@ path('userDislike/<int:pk>',DisLIke.as_view())
 
 app_name = 'health'
 urlpatterns = [
-    path('health',health)
+    path('',health)
 ]
