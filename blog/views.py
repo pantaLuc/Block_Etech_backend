@@ -119,4 +119,4 @@ class ChangeUserRole(viewsets.ViewSet):
 
 @api_view(['GET'])
 def health(request):
-   return Response(status=status.HTTP_202_ACCEPTED)
+   return Response(status=status.HTTP_200_OK)
