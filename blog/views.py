@@ -7,6 +7,7 @@ from users.models import User
 from .serializers import ArticleSerializer, Article_tagSerializer, CategorySerializer, CommentSerializer, LikeSerializer, TagSerializer
 from users.serializers import UserDetailsSerializer
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework import generics,permissions, serializers ,viewsets,status
 from rolepermissions.mixins import HasRoleMixin
 from rolepermissions.mixins import HasPermissionsMixin
@@ -115,3 +116,7 @@ class DisLIke(generics.DestroyAPIView):
 
 class ChangeUserRole(viewsets.ViewSet):
    pass
+
+@api_view(['GET'])
+def health(request):
+   return Response(status=status.HTTP_202_ACCEPTED)

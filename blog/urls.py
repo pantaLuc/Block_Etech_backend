@@ -1,5 +1,14 @@
 from django.urls import path
-from .views import ArticleAdmin, ArticleWriter, Article_Tage, ArtticleViewCreate, CategoryAPIView, CategoryCreateView, CommentAPIView, CommentCreateAPI, DisLIke, LikeCreate, ListArticlePublish, TagAPIView, TagCreateView 
+from .views import (
+    ArticleAdmin, ArticleWriter, 
+    Article_Tage, ArtticleViewCreate, 
+    CategoryAPIView,CategoryCreateView, 
+    CommentAPIView, CommentCreateAPI, 
+    DisLIke, LikeCreate, 
+    ListArticlePublish, 
+    TagAPIView, TagCreateView , health)
+
+app_name='blog'
 urlpatterns = [
  path('listarticlePublished/',ListArticlePublish.as_view({
      'get':'list_publish_article'
@@ -35,4 +44,9 @@ path('userRetrieveTageArticle/<int:pk>/',Article_Tage.as_view()),
 path('userLikeArticle/',LikeCreate.as_view()),
 path('userDislike/<int:pk>',DisLIke.as_view())
 
+]
+
+app_name = 'health'
+urlpatterns = [
+    path('health',health)
 ]

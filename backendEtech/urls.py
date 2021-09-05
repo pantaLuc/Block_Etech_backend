@@ -29,7 +29,7 @@ title="Blog API",
 default_version="v1",
 description="Here is the blog for Etech-Sw ",
 terms_of_service="https://www.google.com/policies/terms/",
-contact=openapi.Contact(email="hello@example.com"),
+contact=openapi.Contact(email="info@etech-sw.org "),
 license=openapi.License(name="BSD License"),
 ),
 public=True,
@@ -39,7 +39,7 @@ permission_classes=(permissions.AllowAny,),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('health/',include('blog.urls')),
+    path('health/',include('blog.urls'),name='health'),
     
      path(
         'api/user/registration/account-confirm-email/<str:key>/',
@@ -48,7 +48,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),#1
     path('api/user/', include('dj_rest_auth.urls')), #3
     path('user/api/' ,include('users.urls')),
-    path('blog/api/' ,include('blog.urls')),
+    path('blog/api/' ,include('blog.urls') , name='blog'),
     path('api/user/registration/', include('dj_rest_auth.registration.urls')),#4
     path('api/user/account-confirm-email/',VerifyEmailView.as_view(),name='account_email_verification_sent'),#5
    path(
