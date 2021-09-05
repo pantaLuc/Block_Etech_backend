@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from drf_yasg import views
 from rest_framework import permissions # 2
 from dj_rest_auth.registration.views import VerifyEmailView,ConfirmEmailView
 from dj_rest_auth.views import PasswordResetConfirmView
@@ -23,6 +24,7 @@ from django.conf import settings
 from rest_framework import permissions # new
 from drf_yasg.views import get_schema_view # new
 from drf_yasg import openapi # new
+from blog  import views
 schema_view = get_schema_view( # new
 openapi.Info(
 title="Blog API",
@@ -39,7 +41,7 @@ permission_classes=(permissions.AllowAny,),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('health',include('blog.urls'),name='health'),
+    path('health',views.health),
     
      path(
         'api/user/registration/account-confirm-email/<str:key>/',
@@ -48,7 +50,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),#1
     path('api/user/', include('dj_rest_auth.urls')), #3
     path('user/api/' ,include('users.urls')),
-    path('blog/api/' ,include('blog.urls') , name='blog'),
+    path('blog/api/' ,include('blog.urls')),
     path('api/user/registration/', include('dj_rest_auth.registration.urls')),#4
     path('api/user/account-confirm-email/',VerifyEmailView.as_view(),name='account_email_verification_sent'),#5
    path(
